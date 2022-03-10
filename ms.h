@@ -6,22 +6,23 @@
 /*   By: lvan-tic <lvan-tic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 10:30:18 by lvan-tic          #+#    #+#             */
-/*   Updated: 2022/03/10 10:38:41 by lvan-tic         ###   ########.fr       */
+/*   Updated: 2022/03/10 12:40:26 by lvan-tic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MS_H
 # define MS_H
 
-# include	<stdio.h>
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<readline/readline.h>
-# include	<readline/history.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <fcntl.h>
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <signal.h>
 
 typedef struct s_data
 {
@@ -48,5 +49,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	*ft_find(char *ihaystack, char *ineedle, size_t len);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 #endif
