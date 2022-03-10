@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvan-tic <lvan-tic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 10:30:25 by lvan-tic          #+#    #+#             */
-/*   Updated: 2022/03/10 11:25:05 by lvan-tic         ###   ########.fr       */
+/*   Created: 2022/03/10 17:13:02 by lvan-tic          #+#    #+#             */
+/*   Updated: 2022/03/10 17:13:15 by lvan-tic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,23 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		sub[i] = '\0';
 	}
 	return (sub);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (s2[i] == '\0')
+		return (0);
+	else
+		return (-s2[i]);
 }
 
 char	*ft_find(char *ihaystack, char *ineedle, size_t len)

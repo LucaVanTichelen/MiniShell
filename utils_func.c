@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvan-tic <lvan-tic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 10:30:21 by lvan-tic          #+#    #+#             */
-/*   Updated: 2022/03/10 10:47:02 by lvan-tic         ###   ########.fr       */
+/*   Created: 2022/03/10 17:13:26 by lvan-tic          #+#    #+#             */
+/*   Updated: 2022/03/10 17:15:11 by lvan-tic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ void	update_pwd(t_data *data) //check for leaks
 	char	*temp;
 	char	*path;
 
-	(void)data;
 	i = 0;
-	path = ft_strjoin("PWD=", get_pwd(data));
+	(void)data;
+	path = ft_strjoin("PWD=", get_pwd());
 	if (!path)
 		exit(0);
 	temp = NULL;
-	while (data->env[i])
+	while (data->env_now[i])
 	{
-		if (ft_strncmp(data->env[i], "PWD=", 4) == 0)
+		if (ft_strncmp(data->env_now[i], "PWD=", 4) == 0)
 		{
-			temp = ft_strdup(data->env[i]);
-			data->env[i] = path;
+			temp = ft_strdup(data->env_now[i]);
+			data->env_now[i] = path;
 			if (temp)
 				free(temp);
 			return ;
@@ -41,4 +41,30 @@ void	update_pwd(t_data *data) //check for leaks
 		free(path);
 	if (temp)
 		free(temp);
+}
+
+// return line in env with *str
+char	*line_in_env(t_data *data, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (data->env_now[i])
+	{
+		if (ft_strncmp(data->env_now[i], str, ft_strlen(str)) == 0)
+			return (data->env_now[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+// return VALUE from line (by =)
+char	*value_from_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '=')
+		i++;
+	return (ft_substr(line, i + 1, ft_strlen(line) - i));
 }
