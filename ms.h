@@ -6,23 +6,24 @@
 /*   By: lvan-tic <lvan-tic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:07:12 by lvan-tic          #+#    #+#             */
-/*   Updated: 2022/03/10 17:10:42 by lvan-tic         ###   ########.fr       */
+/*   Updated: 2022/03/11 11:07:07 by lvan-tic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MS_H
 # define MS_H
 
-# include	<stdio.h>
-# include	<stdlib.h>
-# include	<unistd.h>
-# include	<readline/readline.h>
-# include	<readline/history.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <fcntl.h>
 # include <string.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <signal.h>
+# include <termios.h>
 
 typedef struct s_list
 {
@@ -49,8 +50,10 @@ typedef struct s_data
 	char	**strstr; //strstr[0], strstr[1] = NULL;
 }	t_data;
 
+void	rl_replace_line (const char *text, int clear_undo);
+
 //builtins
-char	*get_pwd(void);
+char	*get_pwd(t_data *data);
 void	print_env(t_data *data);
 void	make_cd(t_data *data, char **av);
 void	make_echo(char *str);

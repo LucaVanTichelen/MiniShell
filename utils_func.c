@@ -6,7 +6,7 @@
 /*   By: lvan-tic <lvan-tic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:13:26 by lvan-tic          #+#    #+#             */
-/*   Updated: 2022/03/10 17:15:11 by lvan-tic         ###   ########.fr       */
+/*   Updated: 2022/03/11 10:47:40 by lvan-tic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	update_pwd(t_data *data) //check for leaks
 
 	i = 0;
 	(void)data;
-	path = ft_strjoin("PWD=", get_pwd());
+	path = ft_strjoin("PWD=", get_pwd(data));
 	if (!path)
 		exit(0);
 	temp = NULL;
